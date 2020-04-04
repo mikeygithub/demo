@@ -19,8 +19,8 @@ import java.util.LinkedHashMap;
 public class MapDemo {
 
     /**
-     * HashMap非线程安全，默认容量：16，扩容2的幂次方，JDK1.8以后当链表长度大于阀值（默认8）将链表转为红黑树，以减少搜索时间。
-     * HashTable线程安全synchronized修饰方法，默认容量：11 扩容：2n+1
+     * HashMap：非线程安全，默认容量：16，扩容2的幂次方，JDK1.8以后当链表长度大于阀值（默认8）将链表转为红黑树，以减少搜索时间。
+     * HashTable：线程安全synchronized修饰方法，默认容量：11 扩容：2n+1
      */
     @Test
     public void hashTable() {
