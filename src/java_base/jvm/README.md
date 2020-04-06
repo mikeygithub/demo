@@ -223,4 +223,49 @@ Parallel Old　收集器
 
 >主要是为了提高GC效率。
 
-## 
+## 类文件结构
+
+```text
+ClassFile　{
+    u4 magic;//Class 文件的标志
+    u2 minor_version;//Class 的小版本
+    u2 major_version;//Class 的大版本
+    u2 constant_pool_count;//常量池的数量
+    cp_info constant_pool_[constant_pool_count-1];//常量池
+    u2 access_flags;//Class　访问标志
+    u2 this_class;//当前类
+    u2 super_class;//父类
+    u2 interfaces_count;//接口数量
+    u2 interfaces[interfaces_count];//接口
+    u2 fields_count;//Class 文件的字段属性个数
+    field_info fields[fields_count];//字段
+    u2 methods_count;//方法数量
+    method_info methods[methods_count];//方法
+    u2 attributes_count;//此类的属性表中的属性数
+    attribute_info attributes[attributes_count];//属性表集合
+}
+```
+![avatar](classfile.png)
+
+- 魔数：确定这个文件是否为一个能被虚拟机接收的Class文件。
+- Class文件版本：Class文件的版本号，保证编译正常执行。
+- 常量池：常量池主要存放两大常量：字面量、符号引用
+- 访问标志：标志用于识别一些类或者接口层次的访问信息,包括：这个Class是类还是接口,是否为public 或者abstract类型，如果是类的话是否声明为final等等。
+- 当前类索引,父类索引:类索引用于确定这个类的全限定名，父类索引用于确定这个类的父类的全限定名，由于Java语言的单继承，所以父类索引只有一个，除了java.lang.Object之外，所有的java类都有父类，因此除了java.lang.Object类外，所有Java类的父类索引都不为０．
+- 接口索引集合:接口索引集合用来描述这个类实现了那些接口，这些被实现的接口将按implements（如果这个类本身是接口的话则是ｅｘｔｅｎｄｓ）后的接口顺序从左到右排列在接口索引集合中。
+- 字段表集合：描述接口或者类中声明的变量。字段包括类级变量以及实例变量，但不包括在方法内部声明的局部变量。
+- 方法表集合：类中的方法。
+- 属性表集合：在Class文件，字段表，方法表中都可以携带自己的属性表集合。
+
+
+## 类的加载过程
+
+`加载－连接－初始化－验证－准备－解析`
+
+- 加载：
+>1.通过类名
+- 连接：
+- 初始化：
+- 验证：
+- 准备：
+- 解析：
